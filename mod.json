@@ -1,0 +1,14 @@
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "New ModKit project",
+  "author": "",
+  "dependencies": {
+    "core": "^1.0.0"
+  },
+  "registry": {
+    "default": "http://localhost:8000/api/packages",
+    "fallback": "./modules",
+    "local": "./modules"
+  }
+}
