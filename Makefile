@@ -1,22 +1,15 @@
 
 # ============================================
-# Multi-project deployment system - Core framework
+# ModKit - 模块化构建系统
 # ============================================
-# Configuration file:
-#   - config.yaml: System configuration
-#   - modules.mk: Module configuration
+# 配置文件：
+#   - mod.json: 模块配置
+#   - modules.mk: 启用的模块列表
 # ============================================
 
 # Environment variables configuration
 PROJECT_ROOT ?= $(shell pwd)
 MODULES_DIR := $(PROJECT_ROOT)/modules
-REGISTRY ?= ghcr.io
-NAMESPACE ?= your-namespace
-TAG ?= latest
-
-# Configuration file
-SYSTEM_CONFIG ?= config.yaml
-MODULES_CONFIG ?= modules.mk
 
 # Load system configuration
 ifneq ("$(wildcard $(SYSTEM_CONFIG))","")

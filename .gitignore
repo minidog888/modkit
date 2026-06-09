@@ -1,7 +1,4 @@
-# 配置文件
-install.lock
-dist
 
-# 环境变量
-**/.env
-**/*.env
+/install.lock
+/dist
+/.env
