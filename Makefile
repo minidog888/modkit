@@ -11,24 +11,28 @@
 PROJECT_ROOT ?= $(shell pwd)
 MODULES_DIR := $(PROJECT_ROOT)/modules
 
+# Define configuration paths
+SYSTEM_CONFIG ?= system.mk
+MODULES_CONFIG ?= modules.mk
+
 # Load system configuration
 ifneq ("$(wildcard $(SYSTEM_CONFIG))","")
-	include $(SYSTEM_CONFIG)
+        include $(SYSTEM_CONFIG)
 endif
 
 # Load module configuration
 ifneq ("$(wildcard $(MODULES_CONFIG))","")
-	include $(MODULES_CONFIG)
+        include $(MODULES_CONFIG)
 endif
 
 # Load core module (shared utilities)
-include modules/core/module.mk
+include $(PROJECT_ROOT)/modules/core/module.mk
 
 # Load optional modules (support submodules)
 ifdef ENABLE_MODULES
 	# Load top-level modules first
-	-include $(patsubst %,modules/%/module.mk,$(ENABLE_MODULES))
+	-include $(patsubst %,$(PROJECT_ROOT)/modules/%/module.mk,$(ENABLE_MODULES))
 	
 	# Check and load submodules if any
-	-include $(patsubst %,modules/%/modules/*/module.mk,$(ENABLE_MODULES))
+	-include $(patsubst %,$(PROJECT_ROOT)/modules/%/modules/*/module.mk,$(ENABLE_MODULES))
 endif
